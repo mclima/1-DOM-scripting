@@ -1,6 +1,44 @@
 # Introduction
 
-<!-- v 1.0 -->
+<!-- v 1.1 -->
+
+- [Introduction](#introduction)
+  - [Code of Conduct](#code-of-conduct)
+  - [Resources](#resources)
+    - [Github](#github)
+    - [Reading](#reading)
+  - [Homework](#homework)
+  - [Today's Homework](#todays-homework)
+  - [This Week's Reading](#this-weeks-reading)
+  - [Summary of Tools and Technology](#summary-of-tools-and-technology)
+  - [VSCode](#vscode)
+    - [VSCode Extensions](#vscode-extensions)
+  - [The Command Line](#the-command-line)
+  - [DO THIS](#do-this)
+  - [Single Page App](#single-page-app)
+  - [DOM Scripting Review](#dom-scripting-review)
+    - [.querySelectorAll()](#queryselectorall)
+    - [.querySelector()](#queryselector)
+  - [Looping - for and forEach()](#looping---for-and-foreach)
+  - [EXERCISE I - Generating Content From an Array](#exercise-i---generating-content-from-an-array)
+    - [Aside - Template Literals](#aside---template-literals)
+    - [Aside: React](#aside-react)
+  - [EXERCISE II - Content Generation with an Array of Objects](#exercise-ii---content-generation-with-an-array-of-objects)
+    - [Aside: Objects](#aside-objects)
+    - [Array Methods](#array-methods)
+      - [Array.prototype.filter()](#arrayprototypefilter)
+      - [Arrow Functions](#arrow-functions)
+      - [Array.prototype.map() and join()](#arrayprototypemap-and-join)
+      - [Array.prototype.sort()](#arrayprototypesort)
+      - [Array.prototype.reduce()](#arrayprototypereduce)
+  - [EXERCISE III - Using Array.prototype.map()](#exercise-iii---using-arrayprototypemap)
+  - [EXERCISE - Sticky Menu](#exercise---sticky-menu)
+  - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
+  - [EXERCISE - Adding Content](#exercise---adding-content)
+    - [The fetch() API](#the-fetch-api)
+  - [EXERCISE - News Section Headers](#exercise---news-section-headers)
+    - [Array.slice(), Array.filter](#arrayslice-arrayfilter)
+    - [Local Storage](#local-storage)
 
 ## Code of Conduct
 
@@ -548,6 +586,28 @@ Navigate and inspect the code and note that we now have anchor tags with page fr
 
 Open `other > javascript > Objects > objects.html` in a browser tab.
 
+```js
+const me = {
+  first: "Daniel",
+  last: "Deverell",
+  job: "web designer",
+  links: {
+    social: {
+      twitter: "@dannyboynyc",
+      facebook: "https://linkedin.com/danieldeverell",
+    },
+    web: {
+      blog: "http://deverell.dev",
+    },
+  },
+};
+
+const first = me.first;
+const last = me.last;
+
+console.log(first);
+```
+
 Examine the sample object in the browser console:
 
 ```sh
@@ -567,7 +627,7 @@ const { twitter, facebook } = me.links.social;
 const { twitter: twit } = me.links.social;
 ```
 
-This is an example of [destructing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) - a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. We will be using it extensively in this class.
+This is an example of [destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) - a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. We will be using it extensively in this class.
 
 Create a multi-line template string and display it on the page:
 
@@ -886,7 +946,7 @@ fetch(nytUrl)
   .then((myJson) => console.log(myJson));
 ```
 
-Try `console.log(myJson.reults)`
+Try `console.log(myJson.results)`
 
 Instead of logging it we will pass it to a `renderStories` function:
 
@@ -1014,7 +1074,7 @@ Let's add additional Sections to our page.
 In `navItems.js`, replace `navItemsObject` with
 
 ```js
-const navItemsObject = [
+export const navItemsObject = [
   {
     label: "arts",
     link: "#arts",
@@ -1262,7 +1322,7 @@ getArticlesByCategory(categories);
 renderNav();
 ``` -->
 
-## Smooth Scrolling
+<!-- ## Smooth Scrolling
 
 We need to add an ID to the section head divs as well as a classname to support a CSS change.
 
@@ -1297,7 +1357,7 @@ html {
   background: #eee;
   scroll-behavior: smooth;
 }
-```
+``` -->
 
 ## Instructor Notes - students ignore eveything after this point
 
