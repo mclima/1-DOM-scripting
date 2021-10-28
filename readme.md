@@ -598,9 +598,9 @@ const [foo, bar, ...rest] = test;
 
 ### Array Methods
 
-We'll generate our nav using Array methods `map`, `filter` and arrow functions.
+We'll generate our nav using Array methods `map`, `filter` with arrow functions.
 
-#### [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+#### Array.prototype.filter()
 
 Note the inventors sample data in `navitems.js`:
 
@@ -632,18 +632,6 @@ function filterInventors(inventor) {
 console.table(fifteen);
 ```
 
-Or:
-
-```js
-const fifteen = inventors.filter(function (inventor) {
-  if (inventor.year >= 1500 && inventor.year <= 1599) {
-    return true; // keep it
-  }
-});
-
-console.table(fifteen);
-```
-
 #### Arrow Functions
 
 [Arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) are commonly used as a shorter syntax for anonymous functions although they have additional functionality
@@ -659,7 +647,7 @@ console.table(fifteen);
 
 Note the lack of a `return` statement. While they can be used within arrow functions, they are often unnecessary as the `return` is implicit.
 
-#### [Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) and [join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+#### Array.prototype.map() and join()
 
 The map method transforms a collection by applying a function to all of its elements and building a new collection from the returned values.
 
@@ -683,6 +671,30 @@ const fullNames = inventors
   .join(" / ");
 
 console.log("Full names: ", fullNames);
+```
+
+#### Array.prototype.sort()
+
+Sort the inventors by birthdate, oldest to youngest:
+
+```js
+const ordered = inventors.sort(function (a, b) {
+  if (a.year > b.year) {
+    return 1;
+  } else {
+    return -1;
+  }
+});
+```
+
+#### Array.prototype.reduce()
+
+How many years did all the inventors live?
+
+```js
+const totalYears = inventors.reduce((total, inventor) => {
+  return total + (inventor.passed - inventor.year);
+}, 0);
 ```
 
 ## EXERCISE III - Using Array.prototype.map()

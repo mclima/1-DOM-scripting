@@ -1,5 +1,4 @@
 // Functional vs Imperative Programming
-
 // https://stackoverflow.com/questions/1187518/how-to-get-the-difference-between-two-arrays-in-javascript
 
 const intro = [
@@ -24,23 +23,29 @@ const intermediate = [
   "lyy203@nyu.edu",
 ];
 
-let continuingStudents = intro.filter(function (student) {
-  return intermediate.includes(student);
-});
+// imperative example
+function getContinuingStudents(intro, intermediate) {
+  let continuing = [];
 
-continuingStudents; //?
+  for (let i = 0; i < intro.length; i++) {
+    for (let j = 0; j < intermediate.length; j++) {
+      if (intro[i] === intermediate[j]) {
+        continuing.push(intro[i]);
+      }
+    }
+  }
+  return continuing;
+}
+
+getContinuingStudents(intro, intermediate); //?
+
+// let continuingStudents = intro.filter(function (student) {
+//   return intermediate.includes(student);
+// });
 
 // let continuingStudents = intro.filter(student => intermediate.includes(student));
 
-// let nonContinuingStudents = intro.filter(function(student) {
-//   return !intermediate.includes(student);
-// });
-
 // let nonContinuingStudents = intro.filter(student => !intermediate.includes(student));
-
-// let uniqueStudents = intro.filter(function(student) {
-//   return intermediate.includes(student);
-// });
 
 // let uniqueStudents = intro.filter(student => intermediate.includes(student));
 
