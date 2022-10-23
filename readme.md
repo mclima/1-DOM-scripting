@@ -124,6 +124,13 @@ Install Live Server in VS Code
 
 Install Prettier and edit the project settings in the `.vscode` directory as per the instructions to enable format on save for JavaScript.
 
+E.g.:
+
+```
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+"editor.formatOnSave": true,
+```
+
 ---
 
 <!-- end aside -->
@@ -953,15 +960,16 @@ Instead of logging it we will pass it to a `renderStories` function:
 ```js
 fetch(nytUrl)
   .then((response) => response.json())
-  .then((myJson) => renderStories(myJson));
+  // .then((myJson) => renderStories(myJson));
+  .then((myJson) => localStorage.setItem("stories", JSON.stringify(myJson));
 ```
 
 In `renderStories` we take the passed data (our JSON) and run a `forEach` on every item that creates a `div` with the desired content:
 
 ```js
-function renderStories(data) {
-  console.log(data);
-}
+// function renderStories(data) {
+//   console.log(data);
+// }
 ```
 
 Examine the data and you'll see that the information we are interested in is located in `results`.
@@ -969,11 +977,17 @@ Examine the data and you'll see that the information we are interested in is loc
 We will use a forEach loop to log each of the results:
 
 ```js
-function renderStories(data) {
+function renderStories() {
+  let data = JSON.parse(localStorage.getItem("stories"));
   data.results.forEach(function (story) {
     console.log(story);
   });
 }
+// function renderStories(data) {
+//   data.results.forEach(function (story) {
+//     console.log(story);
+//   });
+// }
 ```
 
 Let's use the techniques we covered earlier to create a DOM element for each of the stories:
