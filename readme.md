@@ -67,7 +67,7 @@ Online reading and videos will be assigned.
 
 ## Homework
 
-Homework will be handed in via Github and then alerting me via email - daniel.deverell@nyu.edu. I will have special sessions for those unfamiliar with Git and Github.
+Homework will be handed in via Github and then alerting me via email - daniel.deverell@nyu.edu. I can schedule special sessions for those who require assistance setting up Git and Github.
 
 ## Today's Game
 
@@ -94,17 +94,19 @@ I will periodically review any messages and ultimately try to use the results to
 
 [Mozilla Develpers Network](https://developer.mozilla.org/en-US/docs/Web/javascript#for_complete_beginners) offers a series of JavaScript tutorial.
 
+If you have time, I recommend the [Asynchronous JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous) and the [Client Side Storage](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage) tutorials.
+
 ---
 
 ## Summary of Tools and Technology
 
 A listing of applications and technologies you will be introduced to in the class include:
 
-- HTML, CSS and JavaScript
+- Intermediate/advanced HTML, CSS and JavaScript
 - React, NODE, MongoDB, ExpressJS
 - Visual Studio Code and the Terminal
 - Git and Github
-- SASS and Styled Components (CSS in JS)
+- Styled Components (CSS in JS)
 
 ## Today's Exercise
 
@@ -180,9 +182,9 @@ Examine the CSS file.
 
 As an enhancement, we will add settings for light and dark modes using [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
-The entire updated CSS file is available in the "other folder."
+The entire updated CSS file is available in the "other folder" of this repository if you prefer to copy and paste.
 
-Here's what was added so far:
+Here's what was added:
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -266,7 +268,7 @@ Note the [section:target](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_S
 
 ### Smooth Scrolling with Page Fragments
 
-If we prefer a scrolling app, comment out the two css rules above and add:
+If we prefer a scrolling app, comment out the two CSS rules above and add:
 
 ```css
 html {
@@ -609,6 +611,7 @@ Becomes this:
 const arr = ["hey", "ho", "let's go"];
 
 arr.map((string) => string + "!").join(" ");
+// arr.map((string) => `${string} !`).join(" ");
 ```
 
 Arrow functions might seem straightforward at first glance, but there are a few “gotchas” to be aware of. It's super common for folks to get tripped up by some of these rules.
@@ -621,7 +624,7 @@ Short form:
 const add1 = (n) => n + 1;
 ```
 
-Long form;
+Long form:
 
 ```js
 const add1 = (n) => {
