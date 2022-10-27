@@ -8,13 +8,12 @@
   - [Homework](#homework)
   - [Today's Game](#todays-game)
   - [Today's Homework](#todays-homework)
-  - [This Week's Reading](#this-weeks-reading)
   - [Summary of Tools and Technology](#summary-of-tools-and-technology)
-  - [VSCode](#vscode)
-    - [VSCode Extensions](#vscode-extensions)
+  - [Today's Exercise](#todays-exercise)
+    - [Today's VSCode Extensions](#todays-vscode-extensions)
   - [The Command Line](#the-command-line)
   - [Examine the Starter Page](#examine-the-starter-page)
-  - [A Single Page App](#a-single-page-app)
+  - [CSS Enhancements](#css-enhancements)
     - [Friends Don't Let Friends Browse in Light Mode](#friends-dont-let-friends-browse-in-light-mode)
     - [Smooth Scrolling with Page Fragments](#smooth-scrolling-with-page-fragments)
   - [DOM Scripting Review](#dom-scripting-review)
@@ -30,8 +29,7 @@
   - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
   - [EXERCISE - Adding Content](#exercise---adding-content)
     - [The fetch() API](#the-fetch-api)
-  - [END](#end)
-  - [EXERCISE - News Section Headers](#exercise---news-section-headers)
+  - [SUPPLEMENTAL EXERCISE - News Section Headers](#supplemental-exercise---news-section-headers)
   - [Instructor Notes - students may ignore eveything after this point](#instructor-notes---students-may-ignore-eveything-after-this-point)
     - [Immediately Invoked Function Expression](#immediately-invoked-function-expression)
     - [Local Storage](#local-storage)
@@ -80,22 +78,19 @@ Its important to me to know where you are in your learning journey. During today
 !!! - I've never heard of this before
 !!!! - I've never heard of this before and I'm scared
 
-I will periodically review any messages and use the results to adjust the pace of the class.
+I will periodically review any messages and ultimately try to use the results to adjust the pace of the class.
 
 ## Today's Homework
 
-- CSS/HTML - using the sample at [https://john-doe.neocities.org/](https://john-doe.neocities.org/), use URL hashes as opposed to scrolling to implement navigation on our page. (Hint: inspect `<header>` and `<main>`.) Try making the nav bar static.
 - Install [Git](https://git-scm.com)
 - Install [NodeJS](https://nodejs.org)
 - Create a Github account
 - Create a Netlify account
 
-## This Week's Reading
+- Read [Basic DOM Manipulation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents#active_learning_basic_dom_manipulation) and do the [exercise](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents#active_learning_basic_dom_manipulation)
+- Read [Fetching Data from the Server](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data) and do the [exercise](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data#the_fetch_api.)
 
-Review / learn JavaScript basics on [Mozilla Develpers Network](https://developer.mozilla.org/en-US/docs/Web/javascript#for_complete_beginners). Pay particular attention to the techniques used in today's class:
-
-- [Basic DOM Manipulation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents#active_learning_basic_dom_manipulation)
-- [Fetching Data from the Server](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data)
+[Mozilla Develpers Network](https://developer.mozilla.org/en-US/docs/Web/javascript#for_complete_beginners) offers a series of JavaScript tutorial.
 
 ---
 
@@ -109,7 +104,7 @@ A listing of applications and technologies you will be introduced to in the clas
 - Git and Github
 - SASS and Styled Components (CSS in JS)
 
-## VSCode
+## Today's Exercise
 
 In today's class we will implement [this single page web site](https://intermediate-lesson-one.netlify.app/) with content almost entirely generated using JavaScript (try selecting `view > developer > View Source` in Chrome).
 
@@ -125,7 +120,7 @@ Start VSCode, press `cmd + shift + p` and type in the word `shell`. Select `Inst
 
 ---
 
-### VSCode Extensions
+### Today's VSCode Extensions
 
 Install Live Server in VS Code
 
@@ -140,25 +135,23 @@ E.g.:
 
 ---
 
-<!-- end aside -->
-
 ## The Command Line
 
 You are going to need to have a minimal set of terminal commands at your disposal.
 
-(Windows users should use the Git Bash terminal that is installed along with Git.)
+(Windows users can use the Git Bash terminal that is installed along with Git.)
 
 Start the terminal app:
 
 ```sh
-$ cd  // change directory
-$ cd ~  // go to your home directory
-$ cd <PATH>  // Mac: copy and paste the folder you want to go to
-$ cd Desk  // tab completion
-$ cd ..  // go up one level
-$ ls  // list files, dir on a PC
-$ ls -al  // list file with flags that expand the command
-$ pwd  // print working directory
+$ cd        // change directory
+$ cd ~      // go to your home directory
+$ cd <PATH> // Mac: copy and paste the folder you want to go to
+$ cd Desk   // tab completion
+$ cd ..     // go up one level
+$ ls        // list files, dir on a PC
+$ ls -al    // list file with flags that expand the command
+$ pwd       // print working directory
 ```
 
 ## Examine the Starter Page
@@ -169,19 +162,25 @@ $ pwd  // print working directory
 code .
 ```
 
-Open `index.html`, right click on it and choose 'Open with Live Server'.
+Open `index.html`, right or control click on it and choose 'Open with Live Server'.
 
 Examine the page in the dev tools. Note the responsive navigation using the toggle device toolbar.
 
-Here's the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample.
+(Here's the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample.)
 
-## A Single Page App
+We are currenly viewing a single page application - there is only one HTML file and we scroll up and down to view the content. We could mimic a multi page app using css.
 
-We are currenly view a single page application. We could mimic a multi page app using css.
+## CSS Enhancements
 
 ### Friends Don't Let Friends Browse in Light Mode
 
-As an enhancement, we will add settings for light and dark modes using [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme):
+Examine the CSS file.
+
+As an enhancement, we will add settings for light and dark modes using [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+
+The entire updated CSS file is available in the "other folder."
+
+Here's what was added so far:
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -209,29 +208,63 @@ body {
 .site-wrap {
   background: var(--bgcolor);
 }
+
+html {
+  box-sizing: border-box;
+  background: var(--bgcolor-darker);
+}
 ```
 
-(There may be some additional changes required in the css file.) Use the system preferences (appearance on a Mac) to test.
-
-Add the following to make only one section visible at a time:
+And in the responsive nav block.
 
 ```css
+.main-menu ul {
+  list-style: none;
+  margin: 0;
+  padding-top: 2.5em;
+  min-height: 100%;
+  width: 200px;
+  background-color: var(--bgcolor);
+}
+```
+
+```css
+.main-menu a {
+  display: block;
+  padding: 0.75rem;
+  color: var(--textcolor);
+  text-decoration: none;
+}
+```
+
+```css
+.main-menu a {
+  text-decoration: none;
+  display: inline-block;
+  color: var(--textcolor);
+}
+```
+
+Use the system preferences (Appearance on a Mac) to test.
+
+Experiment by adding the following to make only one section visible at a time:
+
+```css
+/* hides all the sections */
 section {
   display: none;
 }
-
+/* shows only one selection based on the location hash */
 section:target {
   display: block;
 }
 ```
 
-Note the [section:target](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors/Using_the_:target_pseudo-class_in_selectors) selector.
-
-See a demo [here](https://john-doe.neocities.org/).
+Note the [section:target](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors/Using_the_:target_pseudo-class_in_selectors) selector. See a demo [here](https://john-doe.neocities.org/).
 
 ### Smooth Scrolling with Page Fragments
 
-Or, if we prefer a scrolling app, comment out the two css rules above and add:
+If we prefer a scrolling app, comment out the two css rules above and add:
 
 ```css
 html {
@@ -246,12 +279,13 @@ Add jump links to the top of the page in each section:
 <body id="top">
   ...
   <!-- before the close of each of the sections -->
+  <!--  use VS Code's multiple selections feature -->
   <a style="color: var(--highlight)" href="#top">Back to top</a>
   ...
 </body>
 ```
 
-The menu scrolls off the screen and we want to to be available at all times.
+Note: The menu scrolls off the screen and we want to to be available at all times.
 
 We will anchor the menu to the top of the screen once the user has scrolled to the point where the menu would normally be out of sight using the css position property.
 
@@ -268,8 +302,6 @@ Edit the CSS in `nav.css` (inside the media query).
 }
 ```
 
-Note: this would be considered a progressive enhancement as `sticky` is not supported in all browsers. (Support might be extended by following the instructions on [Can I Use](https://caniuse.com/#feat=css-sticky).)
-
 <!-- Note: the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample requires that we leave the first link in place. See the article and `nav.css` for more information. -->
 
 ## DOM Scripting Review
@@ -283,7 +315,7 @@ Use `document.querySelectorAll('selector')` to find all matching elements on a p
 In the browser's console:
 
 ```js
-> var elems = document.querySelectorAll('.main-menu li');
+var elems = document.querySelectorAll(".main-menu li");
 ```
 
 Returns a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
@@ -295,10 +327,10 @@ Use `document.querySelector()` (without the 'All') to find the first matching el
 In the browser's console:
 
 ```js
-> var elem = document.querySelector('.main-menu a');
+var elem = document.querySelector(".main-menu li a");
 ```
 
-Returns an HTML element or "Node."
+Returns the first HTML element or "Node" matched by the selector
 
 ## Looping - for and forEach()
 
@@ -346,8 +378,8 @@ Note the difference between `navItemsObject` and `navItemsArray`. The latter is 
 In the browser console:
 
 ```js
-> navItemsArray;
-> navItemsObject;
+navItemsArray;
+navItemsObject;
 ```
 
 Compare `navList` and `navItemsArray` and note the `prototypes` in the inspector.
@@ -393,22 +425,9 @@ for (let i = 0; i < navList.length; i++) {
 
 We can tell that the text being displayed in the UI is coming from the navItemsArray because they are now capitalized.
 
-Note: the `innerHTML` property can be used to both _get_ and _set_ HTML content in an element.
-
-In the browser console:
-
-```js
-let elem = document.querySelector(".site-wrap");
-// Get HTML content
-let html = elem.innerHTML;
-// Set HTML content
-elem.innerHTML =
-  'We can dynamically change the HTML to include <a href="#">HTML elements</a>.';
-```
-
 We are using the six existing `<li>` elements in the DOM but there are 8 items in our `navItemsArray` array.
 
-We need to dynamically generate the nav from items in the array.
+So we will dynamically generate the nav from items in the array.
 
 Edit the HTML to remove the navigation links:
 
@@ -429,7 +448,7 @@ Edit the HTML to remove the navigation links:
 
 Append a `<ul>` tag to nav using:
 
-1. [document.createElement()](https://vanillajstoolkit.com/reference/dom-injection/#createelement) creates an element, e.g. `var div = document.createElement('div');`.
+1. [document.createElement()](https://vanillajstoolkit.com/reference/dom-injection/#createelement): creates an element, e.g. `var div = document.createElement('div');`.
 2. [append](https://vanillajstoolkit.com/reference/dom-injection/#append).
 
 JavaScript offers a number of methods to determine the insertion point.
@@ -440,19 +459,14 @@ In the console one at a time:
 // Create a new HTML element and add some text
 var elem = document.createElement("div");
 elem.textContent = "I'm inserted via DOM scripting";
-
 // Get the element to add your new HTML element before, after, or within
 var target = document.querySelector(".main-menu");
-
 // Inject the `div` element before the element
 target.before(elem);
-
 // Inject the `div` element after the element
 target.after(elem);
-
 // Inject the `div` element before the first item *inside* the element
 target.prepend(elem);
-
 // Inject the `div` element after the first item *inside* the element
 target.append(elem);
 ```
@@ -496,8 +510,6 @@ We will use [Functional Programming](https://medium.com/javascript-scene/master-
 
 <!-- (See the `filter` examples `students.js` in today's `other` folder. Use [RunJS](https://runjs.app/).) -->
 
----
-
 First, switch out the old school concatenation for a _template string_:
 
 ```js
@@ -507,8 +519,6 @@ for (let i = 0; i < navItemsArray.length; i++) {
   navList.append(listItem);
 }
 ```
-
----
 
 ### Template Literals
 
@@ -575,19 +585,27 @@ In 2015, the language received an alternative syntax for creating functions: arr
 const exclaim = (string) => string + "!";
 ```
 
-Arrow functions are inspired by so-called lambda functions from other functional programming languages. Their main benefit is that they're much shorter and cleaner. Reducing "clutter" may seem like an insignificant benefit, but it can really help improve readability when working with anonymous functions?. For example:
+Arrow functions are inspired by so-called lambda functions from other functional programming languages. Their main benefit is that they're much shorter and cleaner. Reducing "clutter" may seem like an insignificant benefit, but it can really help improve readability when working with anonymous functions?. For example, this:
 
 ```js
 const arr = ["hey", "ho", "let's go"];
 
-// This:
-arr
-  .map(function (string) {
-    return string + "!";
-  })
-  .join(" ");
+function makeString() {
+  return arr
+    .map(function (string) {
+      return string + "!";
+    })
+    .join(" ");
+}
 
-// …Becomes this:
+makeString();
+```
+
+Becomes this:
+
+```js
+const arr = ["hey", "ho", "let's go"];
+
 arr.map((string) => string + "!").join(" ");
 ```
 
@@ -662,156 +680,11 @@ const sayHello = () => console.log("Hello!");
 
 ### Aside: React
 
-Open for reference `other > React > 0-no-react.html` in a browser using [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-
-```html
-<html>
-  <body>
-    <div id="root"></div>
-    <code>
-      <pre>
-        function render(fakeReactElement, containerElement) {
-            // 1. create a DOM element
-            const domElement = document.createElement(reactElement.type);
-          
-            // 2. update properties
-            domElement.innerText = reactElement.children;
-            for (const key in reactElement.props) {
-              const value = reactElement.props[key];
-              domElement.setAttribute(key, value);
-            }
-          
-            // 3. put it in the container
-            containerElement.appendChild(domElement);
-          }
-    </pre
-      >
-    </code>
-  </body>
-  <script>
-    function render(fakeReactElement, containerElement) {
-      // 1. create a DOM element
-      const domElement = document.createElement(fakeReactElement.type);
-
-      // 2. update properties
-      domElement.innerText = fakeReactElement.children;
-      for (const key in fakeReactElement.props) {
-        const value = fakeReactElement.props[key];
-        domElement.setAttribute(key, value);
-      }
-
-      // 3. put it in the container
-      containerElement.appendChild(domElement);
-    }
-
-    const fakeReactElement = {
-      type: "a",
-      props: {
-        href: "https://wikipedia.org/",
-      },
-      children: "Read more on Wikipedia",
-    };
-
-    const containerElement = document.querySelector("#root");
-
-    render(fakeReactElement, containerElement);
-  </script>
-</html>
-```
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
-    <script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-
-    <script type="text/javascript">
-      const rootElement = document.getElementById("root");
-
-      /* vanilla js */
-      const element = document.createElement("a");
-      element.textContent = "Wikipedia";
-      element.className = "container";
-      element.href = "https://wikipedia.org/";
-      rootElement.appendChild(element);
-
-      /* React */
-      // const element = React.createElement(
-      //   "a",
-      //   {
-      //     className: "container",
-      //     href: "https://wikipedia.org/",
-      //   },
-      //   "Wikipedia"
-      // );
-
-      console.log(element);
-
-      // ReactDOM.render(element, rootElement);
-    </script>
-  </body>
-</html>
-```
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="root"></div>
-
-    <script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-
-    <script type="text/babel">
-      const rootElement = document.getElementById("root");
-
-      const Link = (props) => {
-        return (
-          <li>
-            <a href={props.href}>{props.linkText}</a>
-          </li>
-        );
-      };
-
-      const Links = () => {
-        return (
-          <ul>
-            <Link linkText="Wikipedia" href="https://wikipedia.org/" />
-            <Link linkText="Google" href="https://google.com/" />
-            <Link linkText="Apple" href="https://apple.com" />
-          </ul>
-        );
-      };
-
-      ReactDOM.render(
-        // <Link linkText="Wikipedia" href="https://wikipedia.org/" />,
-        <Links />,
-        rootElement
-      );
-    </script>
-  </body>
-</html>
-```
-
 Since we will be spending much of our time this semester in React, it is worthwhile to point out at this time that React - at its most basic - is an alternate way to create reusable DOM elements.
 
-The second file, `2-react-jsx.html`, uses [Babel](https://babeljs.io) to compile JSX - an html-like feature.
+Open `other > React > 0-no-react.html` in a browser using [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) and complete the function.
+
+The third file, `2-react-jsx.html`, uses [Babel](https://babeljs.io) to compile JSX - an html-like feature.
 
 ---
 
@@ -819,11 +692,10 @@ The second file, `2-react-jsx.html`, uses [Babel](https://babeljs.io) to compile
 
 ## EXERCISE II - Content Generation with an Array of Objects
 
-So far we have been working with a simple array. However most of the data you will encounter will consist of an array of objects:
+So far we have been working with a simple array. However most of the data you will encounter will consist of an array of objects Examples:
 
 - [JSON Placeholder](https://jsonplaceholder.typicode.com/posts), [documentation](https://jsonplaceholder.typicode.com/)
 - [City Growth](https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json), [documentation](https://gist.github.com/Miserlou/c5cd8364bf9b2420bb29)
-- [New York Times API](https://api.nytimes.com/svc/topstories/v2/nyregion.json?api-key=uQG4jhIEHKHKm0qMKGcTHqUgAolr1GM0), [documentation](https://developer.nytimes.com/)
 - [Pokemon API](https://pokeapi.co/api/v2/ability/?limit=5&offset=0), [documentation](https://pokeapi.co)
 - and our navItemsObject:
 
@@ -866,7 +738,7 @@ const navItemsObject = [
 
 Add the links using `navItemsObject` instead of `navItemsArray`.
 
-Note the the 'dot' accessor notation for dealing with an object and the addition of the anchor tags:
+Note the the 'dot' accessor notation for accessing a value from an object (and the addition of the anchor tags):
 
 ```js
 navItemsObject.forEach(function (item) {
@@ -878,7 +750,7 @@ navItemsObject.forEach(function (item) {
 
 Navigate and inspect the code and note that we now have anchor tags with page fragment links in our html and are able to navigate within our page.
 
-Note: if we wanted we could derive the hash (href) from the Array values. In real life this would rarely be the case:
+Note: if we wanted we could derive the hash (href) from the Array values:
 
 ```js
 for (let i = 0; i < navItemsArray.length; i++) {
@@ -889,6 +761,8 @@ for (let i = 0; i < navItemsArray.length; i++) {
   navList.append(listItem);
 }
 ```
+
+(In real life this would rarely be the case.)
 
 ### Aside: Objects
 
@@ -1188,11 +1062,14 @@ const markup = `
 `;
 ```
 
-Note the use of nested template strings here.
+Note
 
-These methods, `.map`, `.filter` (and others we have yet to look at such as `.reduce`) are _the prefered_ means of working with data. They are **declarative** as opposed to **imperative** and are important methods in the functional programmer's toolkit.
+- the use of nested template strings here
+- `nav.append(navList)` is now `nav.innerHTML = markup` since we no longer use `document.createElement()`.
 
-Examine the responsive navigation on small screens using the device toolbar. The close button has been lost due to the use of `nav.innerHTML = markup;`. We essential blew out all the html and replaced it with our own.
+These methods, `.map`, `.filter` and the others are _the prefered_ means of working with data - especially in React. They are **declarative** as opposed to **imperative** and are important methods in the functional programmer's toolkit.
+
+Note: examine the responsive navigation on small screens using the device toolbar. The close button has been lost due to the use of `nav.innerHTML = markup`. We essentially blew out all the html and replaced it with our own.
 
 There are a number of ways to resolve this.
 
@@ -1217,7 +1094,7 @@ const markup = `
 `;
 ```
 
-Another might be to add an element to the DOM:
+Another might be to leave the code in the HTML and add an element to the DOM to receive our generated HTML:
 
 ```html
 <nav id="main-menu" class="main-menu" aria-label="Main menu">
@@ -1230,7 +1107,7 @@ Another might be to add an element to the DOM:
     <span class="sr-only">Close main menu</span>
     <span class="fa fa-close" aria-hidden="true"></span>
   </a>
-  <!-- HERE -->
+  <!-- HERE before the close of </nav> -->
   <span id="main-nav"></span>
 </nav>
 ```
@@ -1238,6 +1115,24 @@ Another might be to add an element to the DOM:
 And add the markup to it:
 
 ```js
+nav.querySelector("#main-nav").innerHTML = markup;
+```
+
+Add the join:
+
+```js
+const nav = document.querySelector(".main-menu");
+
+const markup = `
+  <ul>
+    ${navItemsObject
+      .map(function (item) {
+        return `<li><a href="${item.link}">${item.label}</a></li>`;
+      })
+      .join("")}
+  </ul>
+  `;
+
 nav.querySelector("#main-nav").innerHTML = markup;
 ```
 
@@ -1262,7 +1157,7 @@ logo.classList.add("logo");
 logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
 ```
 
-Examine the SVG file in VS Code. Note the `fill` property for svg.
+Examine the SVG file in VS Code. Note the `fill` property for svg. Change it to white.
 
 <!-- An interesting application of SVG:
 - [Responsive logos](http://responsivelogos.co.uk) -->
@@ -1396,7 +1291,7 @@ function renderStories() {
     var storyEl = document.createElement("div");
     storyEl.className = "entry";
     storyEl.innerHTML = `
-    <img src="${story.multimedia[0].url}" alt="${story.title}" />
+    <img src="${story.multimedia[7].url}" alt="${story.title}" />
       <div>
         <h3><a target="_blank" href="${story.short_url}">${story.title}</a></h3>
         <p>${story.abstract}</p>
@@ -1426,12 +1321,14 @@ Add some new css to support the new elements:
 }
 
 .entry a {
-  color: #007eb6;
+  color: var(--textcolor);
+  font-family: "Lobster", cursive;
+  font-size: 1.5rem;
   text-decoration: none;
 }
 ```
 
-Try: incrementing the `[0]` in the ternary to get a better image.
+Note: examine the json and try incrementing the `[0]` in the ternary to get a better image.
 
 Refactor using arrow functions and `.map()`:
 
@@ -1461,9 +1358,7 @@ function renderStories() {
 }
 ```
 
-## END
-
-## EXERCISE - News Section Headers
+## SUPPLEMENTAL EXERCISE - News Section Headers
 
 Our goal here is to make the nav bar clicks load new content from the New York Times API, store the data in local storage and render it to the page.
 
@@ -1473,32 +1368,34 @@ In `navItems.js`, replace `navItemsObject` with
 const navItemsObject = [
   {
     label: "Arts",
-    link: "arts",
+    link: "#arts",
   },
   {
     label: "Books",
-    link: "books",
+    link: "#books",
   },
   {
     label: "Fashion",
-    link: "fashion",
+    link: "#fashion",
   },
   {
     label: "Food",
-    link: "food",
+    link: "#food",
   },
   {
     label: "Movies",
-    link: "movies",
+    link: "#movies",
   },
   {
     label: "Travel",
-    link: "travel",
+    link: "#travel",
   },
 ];
 ```
 
-Examine the rendered page. Note: Arts does not appear in the nav because we are using the first li for our logo. Edit the logo related scripts:
+Examine the rendered page. Note: Arts , the first item in our new nav, does not appear in the nav because we are using the first li for our logo. We've blown it out with an `innerHTML` call.
+
+Edit the logo related scripts:
 
 ```js
 // const logo = document.querySelector(".navitem-0");
@@ -1512,7 +1409,7 @@ logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
 navList.prepend(logo);
 ```
 
-Add categories and limit variables to `index.js`:
+Add categories and navItems variables to `index.js`:
 
 ```js
 const categories = navItemsObject.map((item) => item.label);
@@ -1529,7 +1426,6 @@ Add event listeners to each of the nav items:
 ```js
 navItems.forEach((item, index) => {
   item.addEventListener("click", (e) => {
-    e.preventDefault();
     console.log("categories[index]:::", categories[index]);
     fetchArticles(categories[index]);
   });
@@ -1542,7 +1438,7 @@ Refactor our `fetch` call to a `fetchArticles` function that generates a url bas
 
 ```js
 function fetchArticles(section) {
-  console.log("section::", section);
+  section = section.substring(1);
   if (!localStorage.getItem(section)) {
     console.log("ran");
     fetch(
@@ -1555,7 +1451,7 @@ function fetchArticles(section) {
         console.warn(error);
       });
   } else {
-    console.log("didn't run");
+    console.log("didn't ran");
     renderStories(section);
   }
 }
@@ -1571,15 +1467,16 @@ function renderStories(section) {
     var storyEl = document.createElement("div");
     storyEl.className = "entry";
     storyEl.innerHTML = `
-    <img src="${story.multimedia ? story.multimedia[0].url : ""}" alt="${
+      <img src="${story.multimedia ? story.multimedia[0].url : ""}" alt="${
       story.title
     }" />
-
-      <div>
-        <h3><a target="_blank" href="${story.short_url}">${story.title}</a></h3>
-        <p>${story.abstract}</p>
-      </div>
-      `;
+        <div>
+          <h3><a target="_blank" href="${story.short_url}">${
+      story.title
+    }</a></h3>
+          <p>${story.abstract}</p>
+        </div>
+        `;
     root.prepend(storyEl);
   });
 }
@@ -1588,7 +1485,7 @@ function renderStories(section) {
 Set up the arts section to be displayed by default:
 
 ```js
-fetchArticles("arts");
+fetchArticles("#arts");
 ```
 
 Set an active class name:
@@ -1601,6 +1498,30 @@ function setActiveTab(section) {
   }
   const tab = document.querySelector(`li a[href="${section}"]`);
   tab.classList.add("active");
+}
+```
+
+Call `setActiveTab` from the `fetchArticles` function:
+
+```js
+function fetchArticles(section) {
+  setActiveTab(section);
+  section = section.substring(1);
+  if (!localStorage.getItem(section)) {
+    console.log("ran");
+    fetch(
+      `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${nytapi}`
+    )
+      .then((response) => response.json())
+      .then((myJson) => localStorage.setItem(section, JSON.stringify(myJson)))
+      .then(renderStories(section))
+      .catch((error) => {
+        console.warn(error);
+      });
+  } else {
+    console.log("didn't ran");
+    renderStories(section);
+  }
 }
 ```
 
