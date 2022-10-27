@@ -73,7 +73,7 @@ Homework will be handed in via Github and then alerting me via email - daniel.de
 
 Its important to me to know where you are in your learning journey. During today's class, keep the Zoom chat open and enter one of the following as appropriate:
 
-| one  | head                                           |
+| chat | means:                                         |
 | ---- | ---------------------------------------------- |
 | !    | I've heard of this before and used it          |
 | !!   | I've heard of this before but never used it    |
