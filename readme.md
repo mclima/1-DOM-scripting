@@ -73,11 +73,11 @@ Homework will be handed in via Github and then alerting me via email - daniel.de
 
 Its important to me to know where you are in your learning journey. During today's class, keep the Zoom chat open and enter one of the following as appropriate:
 
-<!-- prettier-ignore -->
-| one | head |
-| !   | I've heard of this before and used it |
-| !!   | I've heard of this before but never used it |
-| !!!  | I've never heard of this before |
+| one  | head                                           |
+| ---- | ---------------------------------------------- |
+| !    | I've heard of this before and used it          |
+| !!   | I've heard of this before but never used it    |
+| !!!  | I've never heard of this before                |
 | !!!! | I've never heard of this before and I'm scared |
 
 I will periodically review any messages and ultimately try to use the results to adjust the pace of the class.
