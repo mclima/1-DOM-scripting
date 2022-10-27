@@ -166,7 +166,7 @@ Open `index.html`, right or control click on it and choose 'Open with Live Serve
 
 Examine the page in the dev tools. Note the responsive navigation using the toggle device toolbar.
 
-(Here's the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample.)
+(Here's where the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample was found.)
 
 We are currenly viewing a single page application - there is only one HTML file and we scroll up and down to view the content. We could mimic a multi page app using css.
 
