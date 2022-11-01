@@ -29,7 +29,6 @@
   - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
   - [EXERCISE - Adding Content](#exercise---adding-content)
     - [The fetch() API](#the-fetch-api)
-  - [END](#end)
   - [EXERCISE - News Section Headers](#exercise---news-section-headers)
   - [Instructor Notes - students may ignore eveything after this point](#instructor-notes---students-may-ignore-eveything-after-this-point)
     - [Immediately Invoked Function Expression](#immediately-invoked-function-expression)
@@ -1363,8 +1362,6 @@ function renderStories() {
   });
 }
 ```
-
-## END
 
 ## EXERCISE - News Section Headers
 
