@@ -1224,6 +1224,8 @@ fetch(nytUrl).then(function (response) {
 
 The response needs to be converted to JSON with `response.json()`.
 
+Note that despite the method being named `json()`, the result is not JSON but is instead the result of taking JSON as input and parsing it to produce a JavaScript object.
+
 We can then use the data in our app:
 
 ```js
