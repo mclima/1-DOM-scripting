@@ -13,11 +13,8 @@ html {
   box-sizing: border-box;
   background: #eee;
 }
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+html {
+  scroll-behavior: smooth;
 }
 
 .site-wrap {
