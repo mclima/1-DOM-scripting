@@ -6,8 +6,8 @@
 @media (prefers-color-scheme: dark) {
   html {
     --textcolor: #eee;
-    --bgcolor: #555;
-    --bgcolor-darker: #333;
+    --bgcolor: #333;
+    --bgcolor-contrast: #222;
     --highlight: #ffc400;
   }
 }
@@ -15,7 +15,7 @@
   html {
     --textcolor: #333;
     --bgcolor: #fff;
-    --bgcolor-darker: #ddd;
+    --bgcolor-contrast: #ddd;
     --highlight: #ffc400;
   }
 }
@@ -25,18 +25,12 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.4;
   color: var(--textcolor);
-  background: var(--bgcolor-darker);
+  background: var(--bgcolor-contrast);
 }
 
 html {
   box-sizing: border-box;
-  background: var(--bgcolor-darker);
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+  background: var(--bgcolor-contrast);
 }
 
 .site-wrap {
