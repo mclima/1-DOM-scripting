@@ -26,6 +26,13 @@
     - [Aside: React](#aside-react)
   - [EXERCISE II - Content Generation with an Array of Objects](#exercise-ii---content-generation-with-an-array-of-objects)
     - [Aside: Objects](#aside-objects)
+    - [Array Methods](#array-methods)
+      - [Array.prototype.filter()](#arrayprototypefilter)
+      - [Array.prototype.map()](#arrayprototypemap)
+      - [Array.prototype.sort()](#arrayprototypesort)
+      - [Array.prototype.reduce()](#arrayprototypereduce)
+  - [EXERCISE III - Using Array.prototype.map()](#exercise-iii---using-arrayprototypemap)
+  - [EXERCISE - Adding an SVG Image](#exercise---adding-an-svg-image)
   - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
   - [EXERCISE - Adding Content](#exercise---adding-content)
     - [The fetch() API](#the-fetch-api)
@@ -178,13 +185,13 @@ We are currenly viewing a single page application - there is only one HTML file 
 
 ### Friends Don't Let Friends Browse in Light Mode
 
-Examine the CSS file.
+Examine the CSS file. Note the use of [viewport sized typography](https://css-tricks.com/viewport-sized-typography/) for the `h1`.
 
 As an enhancement, we will add settings for light and dark modes using [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
 
-The entire updated CSS file is available in the "other folder" of this repository if you prefer to copy and paste.
+The entire updated CSS file is available in the "other folder" of this repository as `NEW-styles.css`. Copy and paste the contents into `styles.css` and view the changes via the Source Control diff.
 
-Here's what was added:
+We begin by declaring CSS variables for color in a [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media query. 
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -203,6 +210,11 @@ Here's what was added:
     --highlight: #ffc400;
   }
 }
+```
+
+We then use these variables throughout the CSS file e.g.:
+
+```css
 
 body {
   color: var(--textcolor);
@@ -216,36 +228,6 @@ body {
 html {
   box-sizing: border-box;
   background: var(--bgcolor-darker);
-}
-```
-
-And in the responsive nav block.
-
-```css
-.main-menu ul {
-  list-style: none;
-  margin: 0;
-  padding-top: 2.5em;
-  min-height: 100%;
-  width: 200px;
-  background-color: var(--bgcolor);
-}
-```
-
-```css
-.main-menu a {
-  display: block;
-  padding: 0.75rem;
-  color: var(--textcolor);
-  text-decoration: none;
-}
-```
-
-```css
-.main-menu a {
-  text-decoration: none;
-  display: inline-block;
-  color: var(--textcolor);
 }
 ```
 
