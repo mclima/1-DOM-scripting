@@ -6,7 +6,6 @@
     - [Github](#github)
     - [Reading](#reading)
   - [Homework](#homework)
-  - [Today's Game](#todays-game)
   - [Today's Homework](#todays-homework)
   - [Summary of Tools and Technology](#summary-of-tools-and-technology)
   - [Today's Exercise](#todays-exercise)
@@ -15,6 +14,7 @@
   - [Examine the Starter Page](#examine-the-starter-page)
   - [CSS Enhancements](#css-enhancements)
     - [Friends Don't Let Friends Browse in Light Mode](#friends-dont-let-friends-browse-in-light-mode)
+  - [Aside: CSS targeting with Page Fragments](#aside-css-targeting-with-page-fragments)
     - [Smooth Scrolling with Page Fragments](#smooth-scrolling-with-page-fragments)
   - [DOM Scripting Review](#dom-scripting-review)
     - [.querySelectorAll()](#queryselectorall)
@@ -76,17 +76,6 @@ Online reading and videos will be assigned.
 ## Homework
 
 Homework will be handed in via Github and then alerting me via email - daniel.deverell@nyu.edu. I can schedule special sessions for those who require assistance setting up Git and Github.
-
-## Today's Game
-
-Its important to me to know where you are in your learning journey. During today's class, keep the Zoom chat open and enter one of the following as appropriate:
-
-| chat | means:                                         |
-| ---- | ---------------------------------------------- |
-| !    | I've heard of this before and used it          |
-| !!   | I've heard of this before but never used it    |
-| !!!  | I've never heard of this before                |
-| !!!! | I've never heard of this before and I'm scared |
 
 I will periodically review any messages and ultimately try to use the results to adjust the pace of the class.
 
@@ -234,6 +223,8 @@ html {
 
 Use the system preferences (Appearance on a Mac) to test.
 
+## Aside: CSS targeting with Page Fragments
+
 Experiment by adding the following to make only one section visible at a time:
 
 ```css
@@ -249,9 +240,11 @@ section:target {
 
 Note the [section:target](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors/Using_the_:target_pseudo-class_in_selectors) selector. See a demo [here](https://john-doe.neocities.org/).
 
+---
+
 ### Smooth Scrolling with Page Fragments
 
-If we prefer a scrolling app, comment out the two CSS rules above and add:
+We will use a single page scrolling app. Comment out the two CSS rules above and add:
 
 ```css
 html {
@@ -266,7 +259,7 @@ Add jump links to the top of the page in each section:
 <body id="top">
   ...
   <!-- before the close of each of the sections -->
-  <!--  use VS Code's multiple selections feature -->
+  <!--  USE VS Code's multiple selections feature - Command-d on a Mac -->
   <a href="#top">Back to top</a>
   ...
 </body>
@@ -295,8 +288,6 @@ Edit the CSS in `nav.css` (inside the media query).
   top: 0px;
 }
 ```
-
-<!-- Note: the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample requires that we leave the first link in place. See the article and `nav.css` for more information. -->
 
 ## DOM Scripting Review
 
