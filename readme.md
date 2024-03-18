@@ -33,14 +33,12 @@
       - [Array.prototype.reduce()](#arrayprototypereduce)
   - [EXERCISE III - Using Array.prototype.map()](#exercise-iii---using-arrayprototypemap)
   - [Responsive Navigation Bug](#responsive-navigation-bug)
-  - [EXERCISE - Adding an SVG Image](#exercise---adding-an-svg-image)
+  - [Modular Code](#modular-code)
   - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
   - [EXERCISE - Adding Content](#exercise---adding-content)
     - [The fetch() API](#the-fetch-api)
-  - [EXERCISE - News Section Headers](#exercise---news-section-headers)
-  - [Instructor Notes - students may ignore eveything after this point](#instructor-notes---students-may-ignore-eveything-after-this-point)
+  - [News Navigation](#news-navigation)
     - [Immediately Invoked Function Expression](#immediately-invoked-function-expression)
-    - [Local Storage](#local-storage)
 
 ## Code of Conduct
 
@@ -682,36 +680,28 @@ So far we have been working with a simple array. However most of the data you wi
 ```js
 const navItemsObject = [
   {
-    label: "LOGO",
-    link: "#",
+    label: "Arts",
+    link: "#arts",
   },
   {
-    label: "Watchlist",
-    link: "#watchlist",
+    label: "Books",
+    link: "#books",
   },
   {
-    label: "Research",
-    link: "#research",
+    label: "Fashion",
+    link: "#fashion",
   },
   {
-    label: "Markets",
-    link: "#markets",
+    label: "Food",
+    link: "#food",
   },
   {
-    label: "Workbook",
-    link: "#workbook",
+    label: "Movies",
+    link: "#movies",
   },
   {
-    label: "Connect",
-    link: "#connect",
-  },
-  {
-    label: "Desktop",
-    link: "#desktop",
-  },
-  {
-    label: "FAQ",
-    link: "#faq",
+    label: "Travel",
+    link: "#travel",
   },
 ];
 ```
@@ -730,7 +720,7 @@ navItemsObject.forEach(function (item) {
 
 Navigate and inspect the code and note that we now have anchor tags with page fragment links in our html and are able to navigate within our page.
 
-Note: if we wanted we could derive the hash (href) from the Array values:
+Note: if we wanted we could have derived the hash (href) from the Array values:
 
 ```js
 for (let i = 0; i < navItemsArray.length; i++) {
@@ -740,7 +730,7 @@ for (let i = 0; i < navItemsArray.length; i++) {
 }
 ```
 
-(In real life this would rarely be the case.)
+(IRL this would rarely be the case.)
 
 ### Aside: Objects
 
@@ -1098,64 +1088,37 @@ And add the markup to it:
 nav.querySelector("#main-nav").innerHTML = markup;
 ```
 
-<!-- Add the join:
+## Modular Code 
+
+Create `js/modules/nav.js` and move the code from `index.js` to it in an exported function:
 
 ```js
-const nav = document.querySelector(".main-menu");
-
-const markup = `
-  <ul>
-    ${navItemsObject
-      .map(function (item) {
-        return `<li><a href="${item.link}">${item.label}</a></li>`;
-      })
-      .join("")}
-  </ul>
-  `;
-
-nav.querySelector("#main-nav").innerHTML = markup;
-``` -->
-
-## EXERCISE - Adding an SVG Image
-
-Use the optional index in our map function to create a class name for the li's:
-
-```js
+export function makeNav() {
+  const nav = document.querySelector(".main-menu");
+  const markup = `
+<ul>
 ${navItemsObject
   .map(
     (item, index) =>
       `<li class="navitem-${index}"><a href="${item.link}">${item.label}</a></li>`
   )
   .join("")}
-```
-
-Select the first list item on the nav, add a class and set the innerHTML so that we get a link which will return us to the top of the page:
-
-<!-- ```js
-const logo = document.querySelector(".navitem-0");
-logo.classList.add("logo");
-logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
-``` -->
-
-```js
-const logo = document.querySelector(".navitem-0");
-logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
-```
-
-Examine the SVG file in VS Code. Note the `fill` property for svg. Change it to white.
-
-<!-- An interesting application of SVG:
-- [Responsive logos](http://responsivelogos.co.uk) -->
-
-Format the logo for both mobile and wide screen:
-
-```css
-li.navitem-0 img {
-  width: 2.25rem;
+</ul>
+`;
+  nav.querySelector("#main-nav").innerHTML = markup;
 }
 ```
 
-<!-- Note the use of max-width above. We are using this because transitions do not animate width. -->
+Import the function in `index.js` and call it:
+
+```js
+import { makeNav } from "./modules/nav.js";
+
+makeNav();
+```
+
+
+
 
 ## EXERCISE - AJAX and APIs
 
@@ -1173,10 +1136,17 @@ Note there is a [hard limit](https://developer.nytimes.com/faq#a11) of 10,000 re
 
 The specific API endpoint for this is their [top stories endpoint](https://developer.nytimes.com/docs/top-stories-product/1/overview). It lets us request the top stories from a specific section of their publication.
 
-Start by removing the existing HTML content from the site-wrap div in `index.html` so you are left with an empty div:
+Start by removing the existing HTML content (all the sections) from the site-wrap div in `index.html` and add some boilerplate:
 
 ```html
-<div class="site-wrap"></div>
+<div class="site-wrap">
+  <h2>Welcome!</h2>
+  <p>
+    All the news you need for your leisure activities courtesy of the New
+    York Times.
+  </p>
+  <p>To get started make a selection above.</p>
+</div>
 ```
 
 Store the API key, a template string with the complete URL, and the element we want to manipulate (`.site-wrap`) in a variable:
@@ -1298,7 +1268,7 @@ Note: not all NYTimes stories include images and our script could error if `stor
 
 Ternaries are popular in cases like this - in fact they are essential. You cannot write an `if(){} else(){}` statement inside a string literal. Template literals only support expressions.
 
-Add some new css to support the new elements:
+Add some new css to support the new elements into the break point CSS so it only applies to the wide screen view:
 
 ```css
 .entry {
@@ -1321,10 +1291,39 @@ Note: examine the json and try incrementing the `[0]` in the ternary to get a be
 Refactor using arrow functions and `.map()`:
 
 ```js
-fetch(nytUrl)
-  .then((response) => response.json())
-  .then((myJson) => localStorage.setItem("stories", JSON.stringify(myJson)))
-  .then(renderStories);
+function renderStories() {
+  let data = JSON.parse(localStorage.getItem("stories"));
+  data.results.map((story) => {
+    var storyEl = document.createElement("div");
+    storyEl.className = "entry";
+    storyEl.innerHTML = `
+    <img src="${story.multimedia ? story.multimedia[0].url : ""}" alt="${
+      story.title
+    }" />
+
+      <div>
+        <h3><a target="_blank" href="${story.short_url}">${story.title}</a></h3>
+        <p>${story.abstract}</p>
+      </div>
+      `;
+    root.prepend(storyEl);
+  });
+}
+```
+
+Create a module for the fetching operatiosn in `js/modules/fetch-stories.js`:
+
+```js
+const root = document.querySelector(".site-wrap");
+const nytapi = "KgGi6DjX1FRV8AlFewvDqQ8IYFGzAcHM"; // note this is my API key
+const nytUrl = `https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=${nytapi}`;
+
+export function fetchStories() {
+  fetch(nytUrl)
+    .then((response) => response.json())
+    .then((myJson) => localStorage.setItem("stories", JSON.stringify(myJson)))
+    .then(renderStories);
+}
 
 function renderStories() {
   let data = JSON.parse(localStorage.getItem("stories"));
@@ -1346,67 +1345,32 @@ function renderStories() {
 }
 ```
 
-## EXERCISE - News Section Headers
-
-Our goal here is to make the nav bar clicks load new content from the New York Times API, store the data in local storage and render it to the page.
-
-In `navItems.js`, replace `navItemsObject` with
+Import and call the function in `index.js`:
 
 ```js
-const navItemsObject = [
-  {
-    label: "Arts",
-    link: "#arts",
-  },
-  {
-    label: "Books",
-    link: "#books",
-  },
-  {
-    label: "Fashion",
-    link: "#fashion",
-  },
-  {
-    label: "Food",
-    link: "#food",
-  },
-  {
-    label: "Movies",
-    link: "#movies",
-  },
-  {
-    label: "Travel",
-    link: "#travel",
-  },
-];
+import { makeNav } from "./modules/nav.js";
+import { fetch } from "./modules/fetch-stories.js";
+
+makeNav();
+fetch();
 ```
 
-Examine the rendered page. Note: Arts , the first item in our new nav, does not appear in the nav because we are using the first li for our logo. We've blown it out with an `innerHTML` call.
+## News Navigation
 
-Edit the logo related scripts:
+Currently were are requesting and displaying the travel section of the New York Times. Our goal is to display different sections depending on the navigation item clicked.
 
-```js
-// const logo = document.querySelector(".navitem-0");
-// logo.classList.add("logo");
-// logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
-
-const logo = document.createElement("li");
-const navList = nav.querySelector("nav ul");
-logo.classList.add("logo");
-logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
-navList.prepend(logo);
-```
+Nav bar clicks load new content from the New York Times API, store the data in local storage and render it to the page.
 
 Add categories and navItems variables to `index.js`:
 
 ```js
 const categories = navItemsObject.map((item) => item.link);
-console.log(categories);
+console.log('categories: ', categories);
 ```
 
 ```js
 const navItems = document.querySelectorAll("li[class^='navitem-']");
-console.log(navItems);
+console.log('navItems: ', navItems);
 ```
 
 Add event listeners to each of the nav items:
@@ -1415,17 +1379,38 @@ Add event listeners to each of the nav items:
 navItems.forEach((item, index) => {
   item.addEventListener("click", (e) => {
     console.log("categories[index]:::", categories[index]);
-    fetchArticles(categories[index]);
+    fetch(categories[index]);
   });
 });
 ```
 
-This function calls a new function `fetchArticles` when we click on one of the navigation items.
-
-Refactor our `fetch` call to a `fetchArticles` function that generates a url based on the section:
+**IMPORTANT:** code order is critical here. The event listeners must be added after the nav items are created (via `makeNav()`). Comment out the `fetch()` call:
 
 ```js
-function fetchArticles(section) {
+import { makeNav } from "./modules/nav.js";
+import { fetch } from "./modules/fetch-stories.js";
+
+makeNav();
+// fetch();
+
+const categories = navItemsObject.map((item) => item.link);
+console.log("categories: ", categories);
+
+const navItems = document.querySelectorAll("nav li a");
+console.log("navItems: ", navItems);
+
+navItems.forEach((item, index) => {
+  console.log("item: ", item);
+  item.addEventListener("click", () => {
+    fetch(categories[index]);
+  });
+});
+```
+
+
+
+```js
+function fetch(section) {
   section = section.substring(1);
   if (!localStorage.getItem(section)) {
     console.log("section not in local storage, fetching");
@@ -1445,11 +1430,11 @@ function fetchArticles(section) {
 }
 ```
 
-Refactor our `renderStories` function to generate html based on the section:
+Refactor our `renderStories` function to generate html _based on the section we passed to the fetch call_:
 
 ```js
-async function renderStories(section) {
-  let data = await JSON.parse(localStorage.getItem(section));
+function renderStories(section) {
+  let data = JSON.parse(localStorage.getItem(section));
   if (data) {
     data.results.map((story) => {
       var storyEl = document.createElement("div");
@@ -1472,11 +1457,11 @@ async function renderStories(section) {
 }
 ```
 
-Set up the arts section to be displayed by default:
+<!-- Set up the arts section to be displayed by default:
 
 ```js
-fetchArticles("arts");
-```
+fetch("arts");
+``` -->
 
 Set an active class name:
 
@@ -1500,7 +1485,18 @@ async function renderStories(section) {
 }
 ```
 
-## Instructor Notes - students may ignore eveything after this point
+Add supporting CSS:
+
+```css
+nav a {
+  opacity: 0.9;
+}
+
+nav .active {
+  font-weight: bold;
+  opacity: 1;
+}
+```
 
 ### Immediately Invoked Function Expression
 
@@ -1514,43 +1510,3 @@ Move everything [out of](https://vanillajstoolkit.com/boilerplates/iife/) the gl
 })();
 ```
 
-'use strict': with strict mode you cannot use undeclared variables.
-
-e.g.:
-
-```js
-const stories = data.results.slice(0, limit);
-
-stories.forEach(story => {
-const storyEl = document.createElement('div');
-storyEl.className = 'entry';
-storyEl.innerHTML = `
-```
-
-### Local Storage
-
-Implement [local storage](https://gomakethings.com/saving-html-to-localstorage-with-vanilla-js/)
-
-```js
-function renderStories(data) {
-  ...
- localStorage.setItem('articles', root.innerHTML);
- ...
-}
-```
-
-Style the new category headers:
-
-```css
-.section-head {
-  font-family: Lobster;
-  font-weight: normal;
-  color: #007eb6;
-  font-size: 2.5rem;
-  text-transform: capitalize;
-  padding-bottom: 0.25rem;
-  padding-top: 4rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #007eb6;
-}
-```

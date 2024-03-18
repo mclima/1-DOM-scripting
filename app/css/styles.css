@@ -13,9 +13,6 @@ html {
   box-sizing: border-box;
   background: #eee;
 }
-html {
-  scroll-behavior: smooth;
-}
 
 .site-wrap {
   max-width: 90vw;
@@ -163,7 +160,7 @@ The backdrop is the link on line 42, with no content and hidden. Here we display
 }
 
 /*
-   Now set desktop behavior -- MQ value is set to where the navigation starts to wrap
+   desktop behavior - the media query value is set to where the navigation starts to wrap
   */
 @media (min-width: 800px) {
   /* fa-bars and fa-close not needed on desktop so hide them */
