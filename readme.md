@@ -24,8 +24,7 @@
     - [Template Literals](#template-literals)
     - [Arrow Functions](#arrow-functions)
     - [Aside: React](#aside-react)
-  - [EXERCISE II - Content Generation with an Array of Objects](#exercise-ii---content-generation-with-an-array-of-objects)
-    - [Aside: Objects](#aside-objects)
+  - [EXERCISE II Content Generation with an Array of Objects](#exercise-ii-content-generation-with-an-array-of-objects)
     - [Array Methods](#array-methods)
       - [Array.prototype.filter()](#arrayprototypefilter)
       - [Array.prototype.map()](#arrayprototypemap)
@@ -34,8 +33,8 @@
   - [EXERCISE III - Using Array.prototype.map()](#exercise-iii---using-arrayprototypemap)
   - [Responsive Navigation Bug](#responsive-navigation-bug)
   - [Modular Code](#modular-code)
-  - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
-  - [EXERCISE - Adding Content](#exercise---adding-content)
+  - [AJAX and APIs](#ajax-and-apis)
+  - [Adding Content](#adding-content)
     - [The fetch() API](#the-fetch-api)
   - [News Navigation](#news-navigation)
     - [Immediately Invoked Function Expression](#immediately-invoked-function-expression)
@@ -668,7 +667,7 @@ The third file, `2-react-jsx.html`, uses [Babel](https://babeljs.io) to compile 
 
 <!-- end aside  -->
 
-## EXERCISE II - Content Generation with an Array of Objects
+## EXERCISE II Content Generation with an Array of Objects
 
 So far we have been working with a simple array. However most of the data you will encounter will consist of an array of objects Examples:
 
@@ -732,86 +731,11 @@ for (let i = 0; i < navItemsArray.length; i++) {
 
 (IRL this would rarely be the case.)
 
-### Aside: Objects
-
-Open `other > javascript > Objects > objects.html` in a browser tab.
-
-```js
-const me = {
-  first: "Daniel",
-  last: "Deverell",
-  job: "web designer",
-  links: {
-    social: {
-      twitter: "@dannyboynyc",
-      facebook: "https://linkedin.com/danieldeverell",
-    },
-    web: {
-      blog: "http://deverell.dev",
-    },
-  },
-};
-
-const first = me.first;
-const last = me.last;
-
-console.log(first);
-```
-
-Examine the sample object in the browser console:
-
-```sh
-last
-me
-me.links
-var twitter = me.links.social.twitter
-```
-
-Add to script block:
-
-```js
-const { twitter, facebook } = me.links.social;
-```
-
-```js
-const { twitter: twit } = me.links.social;
-```
-
-This is an example of [object destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) - a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables. We will be using it extensively in this class.
-
-Create a multi-line template string and display it on the page:
-
-```js
-const content = `
-<div>
-  <h2>
-    ${me.first} ${me.last}
-  </h2>
-    <span>${me.job}</span>
-    <p>Twitter: ${twitter}</p>
-    <p>Facebook: ${facebook}</p>
-</div>
-`;
-
-document.body.innerHTML = content;
-```
-
-<!-- and an Array:
-
-```js
-const test = ["one", "two", "three", "four"];
-const [foo, bar, ...rest] = test;
-``` -->
-
----
-
-<!-- end aside  -->
-
 ### Array Methods
 
-JavaScript gives us several tools for iterating over the items in an array. We could have used a for loop, and it's arguably much simpler. There are no complicated callback functions! So why should we learn about `.forEach`?
+JavaScript gives us several tools for iterating over the items in an array. We could have used a for loop, and it's arguably much simpler. So why should we learn about `.forEach`?
 
-Here's the biggest advantage: forEach is part of a family of array iteration methods. Taken as a whole, this family allows us to do all sorts of amazing things, like finding a particular item in the array, filtering a list, and much more.
+Here's the biggest advantage: `forEach` is part of a family of array iteration methods. Taken as a whole, this family allows us to do all sorts of things, like finding a particular item in the array, filtering a list, and much more.
 
 All of the methods in this family follow the same basic structure. For example, they all support the optional index parameter we just looked at!
 
@@ -876,13 +800,6 @@ const studentsWhoPassed = students.filter((student) => {
 });
 
 console.log(studentsWhoPassed);
-/*
-  [
-    { name: 'Aisha', grade: 89 },
-    { name: 'Carlos', grade: 68 },
-    { name: 'Dacian', grade: 71 },
-  ]
-*/
 ```
 
 In many ways, filter is very similar to forEach. It takes a callback function, and that callback function will be called once per item in the array.
@@ -1117,16 +1034,15 @@ import { makeNav } from "./modules/nav.js";
 makeNav();
 ```
 
+We should export and import the `navItemsObject` as well.
 
-
-
-## EXERCISE - AJAX and APIs
+## AJAX and APIs
 
 _AJAX stands for Asynchronous JavaScript And XML. In a nutshell, it is the use of the XMLHttpRequest object to communicate with servers. It can send and receive information in various formats, including JSON, XML, HTML, and text files. AJAX’s most appealing characteristic is its “asynchronous” nature, which means it can communicate with the server, exchange data, and update the page without having to refresh the page._ - [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started)
 
 An API (Application Programming Interface) is a set of definitions, communication protocols, and tools for building software. In general terms, it is a set of clearly defined methods of communication among various components. A good API makes it easier to develop a computer program by providing all the building blocks, which are then put together by the programmer.
 
-## EXERCISE - Adding Content
+## Adding Content
 
 We will use the [NY Times developer](https://developer.nytimes.com) API for getting a data using my API key.
 
