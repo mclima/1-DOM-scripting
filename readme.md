@@ -167,9 +167,11 @@ Open `index.html`, right or control click on it and choose 'Open with Live Serve
 
 Examine the page in the dev tools. Note the responsive navigation using the toggle device toolbar.
 
-(Here's where the [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793) used in today's sample was found.)
+Aside: "All the News That Fits We Print!" is an old joke. "All the News That's Fit to Print," is the actual slogan of The New York Times. 
 
-We are currenly viewing a single page application - there is only one HTML file and we scroll up and down to view the content. We could mimic a multi page app using css.
+We are using a common [responsive hamburger menu technique](https://medium.com/@heyoka/responsive-pure-css-off-canvas-hamburger-menu-aebc8d11d793).
+
+We are currenly viewing a single page application - there is only one HTML file and we scroll up and down to view the content.
 
 ## CSS Enhancements
 
@@ -367,9 +369,9 @@ navItemsArray;
 navItemsObject;
 ```
 
-Compare `elems` and `navItemsArray` and note the `prototypes` in the inspector.
+Compare `elems` and `navItemsArray` and note the `prototypes` in the inspector. The first is a NodeList and the latter an Array.
 
-Both have a length property - `navList.length` and `navItemsArray.length` but the methods are different.
+Both have a length property - `navList.length` and `navItemsArray.length` but the methods / functionality are different.
 
 In `index.js`, select the HTML element with the class `.main-menu` In `index.js`:
 
@@ -408,23 +410,6 @@ _The text being displayed in the UI is coming from the navItemsArray because the
 
 So we will dynamically generate the nav from items in the array.
 
-Edit the HTML to remove the navigation links:
-
-```html
-<nav id="main-menu" class="main-menu" aria-label="Main menu">
-  <a
-    href="#main-menu-toggle"
-    id="main-menu-close"
-    class="menu-close"
-    aria-label="Close main menu"
-  >
-    <span class="sr-only">Close main menu</span>
-    <span class="fa fa-close" aria-hidden="true"></span>
-  </a>
-  <!-- HERE -->
-</nav>
-```
-
 Append a `<ul>` tag to nav using:
 
 1. [document.createElement()](https://vanillajstoolkit.com/reference/dom-injection/#createelement): creates an element, e.g. `var div = document.createElement('div');`.
@@ -452,7 +437,7 @@ target.append(elem);
 
 Let's append a new div to the (now empty) nav.
 
-**Delete eveything in `index.js` and add:**
+Delete eveything in `index.js` and add:
 
 ```js
 const nav = document.querySelector(".main-menu");
@@ -462,7 +447,7 @@ navList.textContent = "Hello world";
 nav.append(navList);
 ```
 
-Note the `<ul>` in the header.
+Note the new `<ul>` in the header.
 
 Dynamically create the nav based on the number of items in the array using a for loop:
 
@@ -483,7 +468,24 @@ nav.append(navList);
 
 Note the use of quotes in the construction or concatination of our innerHTML: `listItem.innerHTML = '<a href="#">' + linkText + "</a>"`. We also used the addition operator (+).
 
-Our nav bar now displays all the items in our array but the code is a bit ugly. This is an example of [imperative programming](https://tylermcginnis.com/imperative-vs-declarative-programming/). In order to prepare for React we need to adopt a more **declarative** style.
+Edit the HTML to remove the navigation links:
+
+```html
+<nav id="main-menu" class="main-menu" aria-label="Main menu">
+  <a
+    href="#main-menu-toggle"
+    id="main-menu-close"
+    class="menu-close"
+    aria-label="Close main menu"
+  >
+    <span class="sr-only">Close main menu</span>
+    <span class="fa fa-close" aria-hidden="true"></span>
+  </a>
+  <!-- HERE -->
+</nav>
+```
+
+Our nav bar now displays all the items in our array but the code is a bit ugly. This is an example of [imperative programming](https://tylermcginnis.com/imperative-vs-declarative-programming/). In order to prepare for React we will adopt a more **declarative** style.
 
 We will use [Functional Programming](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0) techniques.
 
@@ -523,8 +525,6 @@ Strings created with backticks are known as “template strings”. For the most
 We create a dynamic segment within our string by writing `${}`. Anything placed between the squiggly brackets will be evaluated as a JavaScript expression.
 
 ---
-
-<!-- end aside  -->
 
 Use `forEach()` instead of a for loop:
 
