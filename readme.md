@@ -32,6 +32,7 @@
       - [Array.prototype.sort()](#arrayprototypesort)
       - [Array.prototype.reduce()](#arrayprototypereduce)
   - [EXERCISE III - Using Array.prototype.map()](#exercise-iii---using-arrayprototypemap)
+  - [Responsive Navigation Bug](#responsive-navigation-bug)
   - [EXERCISE - Adding an SVG Image](#exercise---adding-an-svg-image)
   - [EXERCISE - AJAX and APIs](#exercise---ajax-and-apis)
   - [EXERCISE - Adding Content](#exercise---adding-content)
@@ -266,12 +267,22 @@ Add jump links to the top of the page in each section:
   ...
   <!-- before the close of each of the sections -->
   <!--  use VS Code's multiple selections feature -->
-  <a style="color: var(--highlight)" href="#top">Back to top</a>
+  <a href="#top">Back to top</a>
   ...
 </body>
 ```
 
-Note: The menu scrolls off the screen and we want to to be available at all times.
+In order to select and style the new links we could add a class, but in this case it is easier to use an attribute selector:
+
+```css
+a[href="#top"] {
+  display: block;
+  padding-bottom: 2rem;
+  color: var(--highlight);
+}
+```
+
+Note: The navigation scrolls off the screen and we want to to be available at all times.
 
 We will anchor the menu to the top of the screen once the user has scrolled to the point where the menu would normally be out of sight using the css position property.
 
@@ -279,11 +290,8 @@ Edit the CSS in `nav.css` (inside the media query).
 
 ```css
 .main-menu {
-  display: block;
-  position: static;
-  background: #007eb6;
-  width: 100%;
-  position: sticky;
+  ...
+  position: sticky; 
   top: 0px;
 }
 ```
@@ -742,9 +750,7 @@ Note: if we wanted we could derive the hash (href) from the Array values:
 ```js
 for (let i = 0; i < navItemsArray.length; i++) {
   let listItem = document.createElement("li");
-  listItem.innerHTML = `<a href="#${navItemsArray[i].toLowerCase()}">${
-    navItemsArray[i]
-  }</a>`;
+  listItem.innerHTML = `<a href="#${navItemsArray[i].toLowerCase()}">${navItemsArray[i]}</a>`;
   navList.append(listItem);
 }
 ```
@@ -1056,6 +1062,8 @@ Note
 
 These methods, `.map`, `.filter` and the others are _the prefered_ means of working with data - especially in React. They are **declarative** as opposed to **imperative** and are important methods in the functional programmer's toolkit.
 
+## Responsive Navigation Bug
+
 Note: examine the responsive navigation on small screens using the device toolbar. The close button has been lost due to the use of `nav.innerHTML = markup`. We essentially blew out all the html and replaced it with our own.
 
 There are a number of ways to resolve this.
@@ -1105,7 +1113,7 @@ And add the markup to it:
 nav.querySelector("#main-nav").innerHTML = markup;
 ```
 
-Add the join:
+<!-- Add the join:
 
 ```js
 const nav = document.querySelector(".main-menu");
@@ -1121,7 +1129,7 @@ const markup = `
   `;
 
 nav.querySelector("#main-nav").innerHTML = markup;
-```
+``` -->
 
 ## EXERCISE - Adding an SVG Image
 
@@ -1138,9 +1146,14 @@ ${navItemsObject
 
 Select the first list item on the nav, add a class and set the innerHTML so that we get a link which will return us to the top of the page:
 
-```js
+<!-- ```js
 const logo = document.querySelector(".navitem-0");
 logo.classList.add("logo");
+logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
+``` -->
+
+```js
+const logo = document.querySelector(".navitem-0");
 logo.innerHTML = '<a href="#"><img src="img/logo.svg" /></a>';
 ```
 
@@ -1152,8 +1165,7 @@ Examine the SVG file in VS Code. Note the `fill` property for svg. Change it to 
 Format the logo for both mobile and wide screen:
 
 ```css
-li.logo img {
-  padding-top: 0.25rem;
+li.navitem-0 img {
   width: 2.25rem;
 }
 ```
@@ -1189,6 +1201,8 @@ const root = document.querySelector(".site-wrap");
 const nytapi = "uQG4jhIEHKHKm0qMKGcTHqUgAolr1GM0"; // note this is my API key
 const nytUrl = `https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=${nytapi}`;
 ```
+
+<!-- KgGi6DjX1FRV8AlFewvDqQ8IYFGzAcHM -->
 
 ### The fetch() API
 
