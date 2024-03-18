@@ -367,15 +367,11 @@ navItemsArray;
 navItemsObject;
 ```
 
-Compare `navList` and `navItemsArray` and note the `prototypes` in the inspector.
+Compare `elems` and `navItemsArray` and note the `prototypes` in the inspector.
 
 Both have a length property - `navList.length` and `navItemsArray.length` but the methods are different.
 
-**Note that we have 8 items in the `navItemsArray` but only 6 in our `navList`.**
-
-**In `index.js`**
-
-Select the HTML element with the class `.main-menu` In `index.js`:
+In `index.js`, select the HTML element with the class `.main-menu` In `index.js`:
 
 ```js
 const nav = document.querySelector(".main-menu");
@@ -408,9 +404,7 @@ for (let i = 0; i < navList.length; i++) {
 }
 ```
 
-We can tell that the text being displayed in the UI is coming from the navItemsArray because they are now capitalized.
-
-We are using the six existing `<li>` elements in the DOM but there are 8 items in our `navItemsArray` array.
+_The text being displayed in the UI is coming from the navItemsArray because they are now capitalized._
 
 So we will dynamically generate the nav from items in the array.
 

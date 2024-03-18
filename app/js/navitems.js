@@ -1,13 +1,4 @@
-const navItemsArray = [
-  "LOGO",
-  "Watchlist",
-  "Research",
-  "Markets",
-  "Workbook",
-  "Connect",
-  "Desktop",
-  "FAQ",
-];
+const navItemsArray = ["Arts", "Books", "Fashion", "Food", "Movies", "Travel"];
 
 const navItemsObject = [
   {
