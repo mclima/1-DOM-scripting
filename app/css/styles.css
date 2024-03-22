@@ -40,6 +40,14 @@ a[href='#top'] {
     padding-bottom: 2rem;
     color: var(--highlight);
 }
+nav a {
+    opacity: 0.9;
+}
+
+nav .active {
+    font-weight: bold;
+    opacity: 1;
+}
 
 .site-wrap {
     max-width: 90vw;
@@ -224,5 +232,17 @@ The backdrop is the link on line 42, with no content and hidden. Here we display
         text-decoration: none;
         display: inline-block;
         color: var(--textcolor);
+    }
+    .entry {
+        display: grid;
+        grid-template-columns: 2fr 6fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .entry a {
+        text-decoration: none;
+        color: var(--textcolor);
+        font-size: 1.5rem;
     }
 }
