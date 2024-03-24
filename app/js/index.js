@@ -41,7 +41,7 @@ function setLocalStorage(section, myJson) {
     localStorage.removeItem(section);
     //create array with articles which belong to the section with the same name
     let results = myJson.results.filter(item => {
-        return item.section.toLowerCase() === section;
+        return item.section.toLowerCase() === section.toLowerCase();
     });
     // console.log(results);
     //sort article by title
