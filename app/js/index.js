@@ -2,7 +2,8 @@ import { makeNav } from './modules/nav.js';
 import navItemsObject from './modules/navitems.js';
 
 const root = document.querySelector('.site-wrap');
-const nytapi = 'KgGi6DjX1FRV8AlFewvDqQ8IYFGzAcHM'; // note this should be your API key
+// const nytapi = 'KgGi6DjX1FRV8AlFewvDqQ8IYFGzAcHM'; // note this should be your API key
+const nytapi = 'L9v8dHMjUlDAG1DtNjhBsiYyUO6VFhhC';
 // const nytUrl = `https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=${nytapi}`;
 
 makeNav();
@@ -35,7 +36,25 @@ function fetchArticles(section) {
 }
 
 function setLocalStorage(section, myJson) {
-    localStorage.setItem(section, JSON.stringify(myJson));
+    // console.log(myJson.results);
+    //clear localStorage
+    localStorage.removeItem(section);
+    //create array with articles which belong to the section with the same name
+    let results = myJson.results.filter(item => {
+        return item.section.toLowerCase() === section;
+    });
+    // console.log(results);
+    //sort article by title
+    const ordered = results.sort(function (a, b) {
+        if (a.title > b.title) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+    console.table(ordered);
+
+    localStorage.setItem(section, JSON.stringify(ordered));
     renderStories(section);
 }
 // fetch(nytUrl)
@@ -54,11 +73,18 @@ function setActiveTab(section) {
 function renderStories(section) {
     setActiveTab(section);
     let data = JSON.parse(localStorage.getItem(section));
-    if (data) {
-        data.results.forEach(story => {
-            let storyEl = document.createElement('div');
-            storyEl.className = 'entry';
-            storyEl.innerHTML = `
+    if (document.querySelectorAll('.entry')) {
+        document.querySelectorAll('.entry').forEach(item => {
+            item.remove();
+        });
+    }
+    let storyEl = document.createElement('div');
+    storyEl.className = 'entry';
+
+    if (data && data.length !== 0) {
+        console.log(data.length);
+        data.forEach(story => {
+            storyEl.innerHTML += `
     <img src="${story.multimedia ? story.multimedia[0].url : ''}" alt="${
                 story.title
             }" />
@@ -67,9 +93,14 @@ function renderStories(section) {
         <p>${story.abstract}</p>
       </div>
       `;
-            root.prepend(storyEl);
         });
     } else {
-        console.log('data not ready yet');
+        if (data.length === 0) {
+            storyEl.innerHTML = 'Articles not available';
+        } else {
+            storyEl.innerHTML = 'data not ready yet';
+        }
     }
+
+    root.prepend(storyEl);
 }
