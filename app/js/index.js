@@ -13,19 +13,21 @@ const navItems = document.querySelectorAll('nav li');
 
 for (let i = 0; i < navItems.length; i++) {
     navItems[i].addEventListener('click', () => {
-        fetchArticles(categories[i]);
+        let category = categories[i].substring(1);
+        document.querySelector('#filter').dataset.filter = category;
+        document.querySelector('#sort').dataset.sort = category;
+        fetchArticles(category);
     });
 }
 
 function fetchArticles(section) {
-    section = section.substring(1);
     if (!localStorage.getItem(section)) {
         console.log('section not in local storage, fetching');
         fetch(
             `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${nytapi}`,
         )
             .then(response => response.json())
-            .then(data => setLocalStorage(section, data))
+            .then(data => setLocalStorage(section, data.results))
             .catch(error => {
                 console.warn(error);
             });
@@ -36,25 +38,9 @@ function fetchArticles(section) {
 }
 
 function setLocalStorage(section, myJson) {
-    // console.log(myJson.results);
     //clear localStorage
     localStorage.removeItem(section);
-    //create array with articles which belong to the section with the same name
-    let results = myJson.results.filter(item => {
-        return item.section.toLowerCase() === section.toLowerCase();
-    });
-    // console.log(results);
-    //sort article by title
-    const ordered = results.sort(function (a, b) {
-        if (a.title > b.title) {
-            return 1;
-        } else {
-            return -1;
-        }
-    });
-    console.table(ordered);
-
-    localStorage.setItem(section, JSON.stringify(ordered));
+    localStorage.setItem(section, JSON.stringify(myJson));
     renderStories(section);
 }
 // fetch(nytUrl)
@@ -73,6 +59,7 @@ function setActiveTab(section) {
 function renderStories(section) {
     setActiveTab(section);
     let data = JSON.parse(localStorage.getItem(section));
+    console.log(data);
     if (document.querySelectorAll('.entry')) {
         document.querySelectorAll('.entry').forEach(item => {
             item.remove();
@@ -104,3 +91,37 @@ function renderStories(section) {
 
     root.prepend(storyEl);
 }
+
+function filterArticles(category) {
+    let data = JSON.parse(localStorage.getItem(category));
+    //create array with articles which belong to the section with the same name
+    // console.log(data);
+    let results = data.filter(item => {
+        return item.section.toLowerCase() === category.toLowerCase();
+    });
+    console.log(results);
+    setLocalStorage(category, results);
+}
+
+function sortArticles(category) {
+    let data = JSON.parse(localStorage.getItem(category));
+    //sort article by title
+    const ordered = data.sort(function (a, b) {
+        if (a.title > b.title) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+    console.table(ordered);
+    setLocalStorage(category, ordered);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#filter').addEventListener('click', () => {
+        filterArticles(document.querySelector('#filter').dataset.filter);
+    });
+    document.querySelector('#sort').addEventListener('click', () => {
+        sortArticles(document.querySelector('#sort').dataset.sort);
+    });
+});
