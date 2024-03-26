@@ -15,7 +15,6 @@ for (let i = 0; i < navItems.length; i++) {
     navItems[i].addEventListener('click', () => {
         let category = categories[i].substring(1);
         document.querySelector('#filter').dataset.filter = category;
-        document.querySelector('#sort').dataset.sort = category;
         fetchArticles(category);
     });
 }
@@ -92,36 +91,27 @@ function renderStories(section) {
     root.prepend(storyEl);
 }
 
-function filterArticles(category) {
+function filterAndSortArticles(category) {
     let data = JSON.parse(localStorage.getItem(category));
     //create array with articles which belong to the section with the same name
     // console.log(data);
     let results = data.filter(item => {
         return item.section.toLowerCase() === category.toLowerCase();
     });
-    console.log(results);
-    setLocalStorage(category, results);
-}
-
-function sortArticles(category) {
-    let data = JSON.parse(localStorage.getItem(category));
-    //sort article by title
-    const ordered = data.sort(function (a, b) {
+    // console.log(results);
+    const ordered = results.sort(function (a, b) {
         if (a.title > b.title) {
             return 1;
         } else {
             return -1;
         }
     });
-    console.table(ordered);
+    // console.table(ordered);
     setLocalStorage(category, ordered);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#filter').addEventListener('click', () => {
-        filterArticles(document.querySelector('#filter').dataset.filter);
-    });
-    document.querySelector('#sort').addEventListener('click', () => {
-        sortArticles(document.querySelector('#sort').dataset.sort);
+        filterAndSortArticles(document.querySelector('#filter').dataset.filter);
     });
 });
